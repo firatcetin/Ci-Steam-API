@@ -3,7 +3,7 @@
 	class Steam {
 		
 		public function __construct($ApiKey) {
-			$this->key = $ApiKey;
+			$this->apikey = $ApiKey['apikey'];
 			$this->imageurl = 'http://steamcommunity-a.akamaihd.net/economy/image/';
 		}
 
@@ -50,11 +50,11 @@
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);    
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);	
 			curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
-			curl_setopt($ch, CURLOPT_URL,"http://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001/?language=tr&key=$this->key&appid=$App&class_count=2&classid0=$Item");
+			curl_setopt($ch, CURLOPT_URL,"http://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001/?language=tr&key=$this->apikey&appid=$App&class_count=2&classid0=$Item");
 			$a = curl_exec($ch);
 			$b = json_decode($a);		
 			
-			return $b->$Item;
+			return $b->result->$Item;
 		}
 		
 	}
