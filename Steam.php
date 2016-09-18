@@ -6,11 +6,7 @@
 			$this->apikey = $ApiKey['apikey'];
 			$this->imageurl = 'http://steamcommunity-a.akamaihd.net/economy/image/';
 		}
-		
-		public function Demo() {
-			//Demo fonksiyonu.$_COOKIE
-			$data = array('bir' => '1', 'iki' => '2');
-		}
+	
 
 		public function Inventory($App, $SteamID) {	
 			$ch = curl_init();
